@@ -14,17 +14,17 @@ def create_project_hash
 
   project = kickstarter.css('li.project.grid_4')
 
-  project_hash = {}
+  :projects = {}
 
   project.each do |project|
     title = project.css('h2.bbcard_name strong a').text
-    project_hash[title] = {}
-    project_hash[title][:image_link] = project.css('.project-thumbnail a img').attribute('src').value
-    project_hash[title][:description] = project.css('p.bbcard_blurb').text.strip
-    project_hash[title][:location] = project.css('ul.project-meta span.location-name').text
-    project_hash[title][:percent_funded] = project.css('ul.project-stats li.first.funded strong').text.gsub('%',"").to_i
+    :projects[title] = {}
+    :projects[title][:image_link] = project.css('.project-thumbnail a img').attribute('src').value
+    :projects[title][:description] = project.css('p.bbcard_blurb').text.strip
+    :projects[title][:location] = project.css('ul.project-meta span.location-name').text
+    :projects[title][:percent_funded] = project.css('ul.project-stats li.first.funded strong').text.gsub('%',"").to_i
   end
-  
+
   project_hash
 end
 

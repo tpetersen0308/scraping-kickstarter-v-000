@@ -18,6 +18,7 @@ def create_project_hash
 
   project.each do |project|
     title = project.css('h2.bbcard_name strong a').text
+    title = title.to_sym
     projects[title] = {}
     projects[title][:image_link] = project.css('.project-thumbnail a img').attribute('src').value
     projects[title][:description] = project.css('p.bbcard_blurb').text.strip

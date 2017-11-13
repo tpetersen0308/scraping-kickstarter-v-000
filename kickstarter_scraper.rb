@@ -25,7 +25,7 @@ def create_project_hash
     :projects[title][:percent_funded] = project.css('ul.project-stats li.first.funded strong').text.gsub('%',"").to_i
   end
 
-  project_hash
+  :projects
 end
 
 create_project_hash

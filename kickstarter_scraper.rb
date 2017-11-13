@@ -20,12 +20,11 @@ def create_project_hash
     title = project.css('h2.bbcard_name strong a').text
     project_hash[title] = {}
     project_hash[title][:image_link] = project.css('.project-thumbnail a img').attribute('src').value
-    
+    project_hash[title][:description] = project.css('p.bbcard_blurb').text.strip
+    project_hash[title][:location] = project.css('ul.project-meta span.location-name').text
+    project_hash[title][:percent_funded] = project.css('ul.project-stats li.first.funded strong').text.gsub('%',"").to_i
   end
-
-
   project_hash
-  binding.pry
 end
 
 create_project_hash

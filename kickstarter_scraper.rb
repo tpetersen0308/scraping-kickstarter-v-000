@@ -20,9 +20,15 @@ def create_project_hash
     project_hash[project.css('h2.bbcard_name strong a').text] = {}
   end
 
+  project_hash.each do |key, value|
+    value[:image_link] = project.css('.project-thumbnail a img').attribute('src').value
+    value[:description] = project.css('p.bbcard_blurb').text.strip
+    value[:location] = project.css('p.bbcard_blurb').text.strip
+    value[:percent_funded] = project.css('ul.project-stats li.first.funded strong').text.gsub('%',"").to_i
+  end
+
   project_hash
 
-  binding.pry
 end
 
 create_project_hash

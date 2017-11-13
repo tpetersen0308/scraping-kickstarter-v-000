@@ -19,7 +19,7 @@ def create_project_hash
   projects.each do |project|
     project_hash[project.css('h2.bbcard_name strong a').text] = {}
   end
-    
+
 
 
 
